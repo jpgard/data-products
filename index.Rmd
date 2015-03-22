@@ -1,0 +1,68 @@
+---
+title       : mpgCalc
+subtitle    : 
+author      : Josh Gardner
+job         : 
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : []            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+---
+
+## Fuel efficiency matters
+
+1. Fuel is expensive!
+2. Fuel-efficient vehicles reduce our carbon footprint
+
+## So -- you want to know your car's mpg!
+
+mpcCalc can help!
+
+* Input basic information about your car
+* Get an instant, reliable estimate of your overall mpg
+
+
+--- .class #id 
+
+## This app isn't just for car owners!
+
+* Can be used for prospective car buyers--to evaluate claims made by car manufacturers, or to search for the ideal specifications needed to produce a desirable fuel economy.
+* Car renters might also want a quick way to verify their vehicle's fuel economy to save on gas while traveling.
+
+## How to use mpgCalc
+
+**This is a turnkey system.** It's ready to use, with no setup required. 
+
+* Input your vehicle's specifications (these items were specifically selected as both important to mpg estimation and as features every car owner would know)
+* See the instant mpg calculation! The numbers and the visualization both update immediately with virtually no lag time.
+* Compare your vehicle to the other cars in the dataset using the plot.
+
+--- .class #id 
+
+## Modeling Details
+
+mpgCalc uses a linear regression model, built on the mtcars dataset, to generate estimates of mpg for the user-provided specifications.
+
+*The model uses variables selected both for being strong predictors of mpg, but also as features every car owner would know.
+* See the instant mpg calculation! 
+* Input your vehicle's specifications (these items were specifically selected as both important to mpg estimation and The numbers and the visualization both update immediately with virtually no lag time.
+* Compare your vehicle to the other cars in the dataset using the plot.
+
+
+--- .class #id 
+## Model Summary
+```{r, echo=TRUE}
+mtcars$am <- factor(mtcars$am)
+appcarfit <- lm(mpg ~ cyl + hp + wt + am + gear, data = mtcars)
+```
+
+```{r, echo=TRUE}
+summary(appcarfit)$coefficients
+summary(appcarfit)$r.squared
+```
+
+
+
+

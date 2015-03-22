@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>mpgCalc</title>
+  <meta charset="utf-8">
+  <meta name="description" content="mpgCalc">
+  <meta name="author" content="Josh Gardner">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>mpgCalc</h1>
+    <h2></h2>
+    <p>Josh Gardner<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Fuel efficiency matters</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>Fuel is expensive!</li>
+<li>Fuel-efficient vehicles reduce our carbon footprint</li>
+</ol>
+
+<h2>So -- you want to know your car&#39;s mpg!</h2>
+
+<p>mpcCalc can help!</p>
+
+<ul>
+<li>Input basic information about your car</li>
+<li>Get an instant, reliable estimate of your overall mpg</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>This app isn&#39;t just for car owners!</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Can be used for prospective car buyers--to evaluate claims made by car manufacturers, or to search for the ideal specifications needed to produce a desirable fuel economy.</li>
+<li>Car renters might also want a quick way to verify their vehicle&#39;s fuel economy to save on gas while traveling.</li>
+</ul>
+
+<h2>How to use mpgCalc</h2>
+
+<p><strong>This is a turnkey system.</strong> It&#39;s ready to use, with no setup required. </p>
+
+<ul>
+<li>Input your vehicle&#39;s specifications (these items were specifically selected as both important to mpg estimation and as features every car owner would know)</li>
+<li>See the instant mpg calculation! The numbers and the visualization both update immediately with virtually no lag time.</li>
+<li>Compare your vehicle to the other cars in the dataset using the plot.</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Modeling Details</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>mpgCalc uses a linear regression model, built on the mtcars dataset, to generate estimates of mpg for the user-provided specifications.</p>
+
+<p>*The model uses variables selected both for being strong predictors of mpg, but also as features every car owner would know.</p>
+
+<ul>
+<li>See the instant mpg calculation! </li>
+<li>Input your vehicle&#39;s specifications (these items were specifically selected as both important to mpg estimation and The numbers and the visualization both update immediately with virtually no lag time.</li>
+<li>Compare your vehicle to the other cars in the dataset using the plot.</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Model Summary</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">mtcars$am &lt;- factor(mtcars$am)
+appcarfit &lt;- lm(mpg ~ cyl + hp + wt + am + gear, data = mtcars)
+</code></pre>
+
+<pre><code class="r">summary(appcarfit)$coefficients
+</code></pre>
+
+<pre><code>##               Estimate Std. Error    t value     Pr(&gt;|t|)
+## (Intercept) 37.1873000  6.0009131  6.1969403 1.484352e-06
+## cyl         -0.8060183  0.6641589 -1.2135926 2.358132e-01
+## hp          -0.0233920  0.0158572 -1.4751655 1.521759e-01
+## wt          -2.6313041  0.9444780 -2.7859876 9.829623e-03
+## am1          1.6657414  1.7319031  0.9617983 3.450112e-01
+## gear        -0.2411571  1.1818776 -0.2040458 8.399065e-01
+</code></pre>
+
+<pre><code class="r">summary(appcarfit)$r.squared
+</code></pre>
+
+<pre><code>## [1] 0.8492728
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Fuel efficiency matters'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='This app isn&#39;t just for car owners!'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Modeling Details'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Model Summary'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
